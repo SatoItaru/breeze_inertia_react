@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 use Inertia\Inertia;
 
 /*
@@ -23,6 +24,8 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::get('/blogs',[BlogController::class, 'index'])->name('blog.index')->middleware('auth');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
