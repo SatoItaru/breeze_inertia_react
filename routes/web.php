@@ -31,6 +31,8 @@ Route::resource('/blogs',BlogController::class)
         'create' => 'blog.create',
         'store' => 'blog.store',
         'destroy' => 'blog.destroy',
+        'edit'=>'blog.edit',
+        'update' => 'blog.update',
         ])
     ->middleware('auth');
 
