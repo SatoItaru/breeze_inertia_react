@@ -26,7 +26,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Blog/Create');
     }
 
     /**
@@ -37,7 +37,14 @@ class BlogController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
-        //
+        $request->validate([
+            'title' => ['required'],
+            'content' => ['required']
+        ]);
+
+        Blog::create($request->all());
+
+        return redirect()->route('blog.index');
     }
 
     /**

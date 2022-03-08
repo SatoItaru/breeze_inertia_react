@@ -25,7 +25,13 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/blogs',[BlogController::class, 'index'])->name('blog.index')->middleware('auth');
+Route::resource('/blogs',BlogController::class)
+    ->names([
+        'index'=>'blog.index',
+        'create' => 'blog.create',
+        'store' => 'blog.store',
+        ])
+    ->middleware('auth');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
