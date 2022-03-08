@@ -4750,7 +4750,7 @@ function Authenticated(_ref) {
                 children: "Dashboard"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Components_NavLink__WEBPACK_IMPORTED_MODULE_3__["default"], {
                 href: route('blog.index'),
-                active: route().current('blog.index'),
+                active: route().current('blog.*'),
                 children: "Blog"
               })]
             })]
