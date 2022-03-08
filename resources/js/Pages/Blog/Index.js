@@ -2,10 +2,16 @@ import React from "react";
 import Authenticated from "@/Layouts/Authenticated";
 import { Head } from "@inertiajs/inertia-react";
 import Button from "@/Components/Button";
-import { Link } from "@inertiajs/inertia-react";
+import { Link, useForm } from "@inertiajs/inertia-react";
 
 
 export default function Index(props) {
+    const { delete: destroy } = useForm();
+    const handleDelete = (id) => {
+        destroy(route("blog.destroy", id), {
+            preserveScroll: true,
+        });
+    };
     return (
         <Authenticated
             auth={props.auth}
@@ -32,6 +38,7 @@ export default function Index(props) {
                                     <tr>
                                         <th>タイトル</th>
                                         <th>コンテンツ</th>
+                                        <th>削除</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,6 +50,17 @@ export default function Index(props) {
                                                 </td>
                                                 <td className="border px-4 py-2">
                                                     {blog.content}
+                                                </td>
+                                                <td className="border px-4 py-2">
+                                                    <button className="px-4 py-2 bg-red-500 text-white rounded-lg text-xs font-semibold"
+                                                    onClick={() =>
+                                                        handleDelete(
+                                                            blog.id
+                                                        )
+                                                    }
+                                                    >
+                                                        削除
+                                                    </button>
                                                 </td>
                                             </tr>
                                         );

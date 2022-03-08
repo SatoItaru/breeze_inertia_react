@@ -30,6 +30,7 @@ Route::resource('/blogs',BlogController::class)
         'index'=>'blog.index',
         'create' => 'blog.create',
         'store' => 'blog.store',
+        'destroy' => 'blog.destroy',
         ])
     ->middleware('auth');
 
