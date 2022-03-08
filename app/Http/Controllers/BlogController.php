@@ -16,7 +16,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Blog/Index');
+        return Inertia::render('Blog/Index',['blogs' => Blog::all()]);
     }
 
     /**
