@@ -36,6 +36,10 @@ Route::resource('/blogs',BlogController::class)
         ])
     ->middleware('auth');
 
+Route::prefix('admin')->name('admin.')->group(function(){
+    require __DIR__.'/admin.php';
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
